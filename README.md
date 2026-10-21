@@ -52,3 +52,10 @@ Working with raw IAB TCF strings means parsing a compact bit-field format by han
 - **Version check.** Strings whose version field is not `2` raise `ValueError` immediately. TCF v1 has a different layout and is not handled.
 - **Truncated strings.** If the base64 payload is too short to contain the core fields, decoding raises `ValueError`.
 - **`consent_language` is not parsed** from the core string; it is always an empty string. The two-letter language code lives in a publisher section this library does not decode.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
