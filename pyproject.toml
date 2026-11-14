@@ -1,6 +1,6 @@
 [project]
 name = "cookie-consent-bitfield"
-version = "0.1.2"
+version = "0.1.3"
 description = "Parses IAB TCF v2 consent strings to and from structured fields."
 requires-python = ">=3.10"
 dependencies = []
